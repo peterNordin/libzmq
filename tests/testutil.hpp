@@ -64,7 +64,12 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <stdexcept>
+#ifdef __MINGW32__
+#include <io.h>
+#else
 #define close closesocket
+#endif
+
 typedef int socket_size_t;
 inline const char *as_setsockopt_opt_t (const void *opt)
 {
